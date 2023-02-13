@@ -1,18 +1,33 @@
 import React from "react";
 import "./style.css";
+import env from "../../helper/env";
 // import Avenger from "../../img/avenger.jpg";
 
-const card = () => {
+// const angger = {
+//   nama: "angger",
+//   umur: 50,
+// };
+
+// const { umur } = angger;
+
+// console.log(">>>>>>>>>>>>>>>>>>>>>>>", umur);
+// console.log(">>>>>>>>>>>>>>>>>>>>>>>", angger?.umur);
+
+const { assetUrl } = env;
+
+const card = ({ data }) => {
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>", `${assetUrl}${data?.poster_path}`);
+
   return (
-    <div className="__card-container">
-      <h1 className="__card-type">Most Popular</h1>
-      <div className="__card">
-        <img src="" alt="" />
-        <div className="__card-detail">
-          <h2>Judul Film</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, in!
-          </p>
+    <div
+      className="__container-card"
+      style={{ backgroundImage: `url(${assetUrl}${data?.poster_path})` }}
+    >
+      <div className="__card-gradient"></div>
+      <div className="__card-detail">
+        <h3>{data?.title}</h3>
+        <div className="__card-detail-description">
+          <p>{data?.overview}</p>
         </div>
       </div>
     </div>
